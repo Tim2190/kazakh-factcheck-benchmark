@@ -1,0 +1,31 @@
+{
+  "_comment": "Model registry for the benchmark. api_type: 'openai' (OpenAI-compatible chat/completions), 'gemini', or 'anthropic'. Keys are read from the env var named in api_key_env (never stored here). Fill in the exact model_id / base_url for the provider you actually use.",
+
+  "gemini": {
+    "api_type": "gemini",
+    "model_id": "gemini-2.0-flash",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "api_key_env": "GEMINI_API_KEY"
+  },
+
+  "deepseek": {
+    "api_type": "openai",
+    "model_id": "deepseek-chat",
+    "base_url": "https://api.deepseek.com/v1",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  },
+
+  "llama": {
+    "api_type": "openai",
+    "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+    "base_url": "https://api.together.xyz/v1",
+    "api_key_env": "LLAMA_API_KEY"
+  },
+
+  "claude": {
+    "api_type": "anthropic",
+    "model_id": "claude-sonnet-5",
+    "base_url": "https://api.anthropic.com/v1",
+    "api_key_env": "ANTHROPIC_API_KEY"
+  }
+}
