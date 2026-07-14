@@ -58,6 +58,9 @@ def main():
             continue
         checked += 1
         frags = [f for f in re.split(r"\.\.\.|…", ev) if len(norm(f)) >= MIN_LEN]
+        if not frags and len(norm(ev)) >= 6:
+            # short single-quote evidence (e.g. a name) — check it whole
+            frags = [ev]
         ok = bool(frags) and all(grounded(f, src) for f in frags)
         if ok:
             hits += 1
