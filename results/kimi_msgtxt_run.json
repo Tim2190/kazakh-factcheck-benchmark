@@ -120,5 +120,6 @@
       "error_type": "entity",
       "evidence": "Бека: Жоқ, прикинь, Астанадан прямой рейс бар екен Эйр Астанамен."
     }
-  ]
+  ],
+  "stale_note": "Claim 052 was reworded after this run; 052 verdict here is for the OLD claim. Re-run pending."
 }
