@@ -1,0 +1,123 @@
+{
+  "model": "qwen",
+  "model_id": "Qwen3.7-Plus",
+  "run_mode": "chat_batch",
+  "prompt_file": "prompts/chat_run_msgtxt.txt",
+  "source_doc": "msgtxt",
+  "predictions": [
+    {
+      "id": "042",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға... Астанадан прямой рейс бар екен Эйр Астанамен. Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "043",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым."
+    },
+    {
+      "id": "044",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Төрт взрослый, үш бала."
+    },
+    {
+      "id": "045",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "046",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Скриптонит қой, полный живой звук болады деді."
+    },
+    {
+      "id": "047",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "048",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Төрт взрослый, үш бала."
+    },
+    {
+      "id": "049",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "050",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық."
+    },
+    {
+      "id": "051",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "052",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "053",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "054",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "055",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Соған қазір гостиница брондап, бас қатыватыр. Сол жаққа барып, бассейнге түсем рахаттанып."
+    },
+    {
+      "id": "056",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Төрт взрослый, үш бала."
+    },
+    {
+      "id": "057",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға."
+    },
+    {
+      "id": "058",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Ал мен 20 қыркүйекте Алматыға барам"
+    },
+    {
+      "id": "059",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "060",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Астанадан прямой рейс бар екен Эйр Астанамен."
+    }
+  ]
+}
