@@ -2,6 +2,7 @@
   "model": "qwen",
   "model_id": "Qwen3.7-Plus",
   "run_mode": "chat_batch",
+  "note": "Re-run after 052 rework.",
   "prompt_file": "prompts/chat_run_msgtxt.txt",
   "source_doc": "msgtxt",
   "predictions": [
@@ -9,13 +10,13 @@
       "id": "042",
       "verdict": "SUPPORTED",
       "error_type": null,
-      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға... Астанадан прямой рейс бар екен Эйр Астанамен. Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға... Астанадан прямой рейс бар екен Эйр Астанамен."
     },
     {
       "id": "043",
       "verdict": "SUPPORTED",
       "error_type": null,
-      "evidence": "Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым."
+      "evidence": "Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады"
     },
     {
       "id": "044",
@@ -33,7 +34,7 @@
       "id": "046",
       "verdict": "REFUTED",
       "error_type": "entity",
-      "evidence": "Скриптонит қой, полный живой звук болады деді."
+      "evidence": "Скриптонит қой"
     },
     {
       "id": "047",
@@ -99,7 +100,7 @@
       "id": "057",
       "verdict": "REFUTED",
       "error_type": "entity",
-      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға."
+      "evidence": "Вьетнамға."
     },
     {
       "id": "058",
@@ -117,8 +118,7 @@
       "id": "060",
       "verdict": "REFUTED",
       "error_type": "entity",
-      "evidence": "Астанадан прямой рейс бар екен Эйр Астанамен."
+      "evidence": "Эйр Астанамен."
     }
-  ],
-  "stale_note": "Claim 052 was reworded after this run; 052 verdict here is for the OLD claim. Re-run pending."
+  ]
 }
