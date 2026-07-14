@@ -50,7 +50,7 @@ def main():
         ROOT, "sources", run.get("source_doc", "leg_text01") + ".txt"),
         encoding="utf-8").read())
 
-    checked = grounded = 0
+    checked = hits = 0
     ungrounded = []
     for p in run["predictions"]:
         ev = p.get("evidence")
@@ -60,13 +60,13 @@ def main():
         frags = [f for f in re.split(r"\.\.\.|…", ev) if len(norm(f)) >= MIN_LEN]
         ok = bool(frags) and all(grounded(f, src) for f in frags)
         if ok:
-            grounded += 1
+            hits += 1
         else:
             ungrounded.append(p["id"])
 
-    rate = grounded / checked * 100 if checked else 0
+    rate = hits / checked * 100 if checked else 0
     print(f"\nModel: {run.get('model')} ({run.get('model_id', 'n/a')})")
-    print(f"Grounding: {grounded}/{checked} evidence quotes found in source "
+    print(f"Grounding: {hits}/{checked} evidence quotes found in source "
           f"= {rate:.0f}%")
     if ungrounded:
         print(f"  NOT grounded (evidence absent from source): {ungrounded}")
