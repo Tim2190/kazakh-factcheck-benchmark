@@ -29,6 +29,16 @@ def norm(s):
     return re.sub(r"\s+", " ", (s or "")).strip().casefold()
 
 
+def grounded(frag, src):
+    """A fragment is grounded if it occurs in the source, optionally after
+    stripping a leading speaker label (e.g. "Бека: ") that a model may prepend
+    to a mid-utterance quote in a dialogue source."""
+    if norm(frag) in src:
+        return True
+    stripped = re.sub(r"^\s*[^:\n]{1,25}:\s*", "", frag)
+    return stripped != frag and norm(stripped) in src
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit("Usage: python scripts/check_grounding.py <results/xxx_run.json>")
@@ -48,7 +58,7 @@ def main():
             continue
         checked += 1
         frags = [f for f in re.split(r"\.\.\.|…", ev) if len(norm(f)) >= MIN_LEN]
-        ok = bool(frags) and all(norm(f) in src for f in frags)
+        ok = bool(frags) and all(grounded(f, src) for f in frags)
         if ok:
             grounded += 1
         else:

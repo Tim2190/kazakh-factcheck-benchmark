@@ -1,0 +1,124 @@
+{
+  "model": "kimi",
+  "model_id": "moonshotai/Kimi-K2.6",
+  "run_mode": "chat_batch",
+  "note": "Routed via HuggingChat Omni.",
+  "prompt_file": "prompts/chat_run_msgtxt.txt",
+  "source_doc": "msgtxt",
+  "predictions": [
+    {
+      "id": "042",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Бека: Короче, біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға. ... Бека: Жоқ, прикинь, Астанадан прямой рейс бар екен Эйр Астанамен."
+    },
+    {
+      "id": "043",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Азамат: Керемет. Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым."
+    },
+    {
+      "id": "044",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Бека: Біздің толпа ғой. Төрт взрослый, үш бала."
+    },
+    {
+      "id": "045",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "046",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Азамат: Скриптонит қой, полный живой звук болады деді."
+    },
+    {
+      "id": "047",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Бека: Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "048",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Бека: Біздің толпа ғой. Төрт взрослый, үш бала."
+    },
+    {
+      "id": "049",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Бека: Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "050",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Бека: Короче, біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға."
+    },
+    {
+      "id": "051",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "052",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "053",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "054",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Бека: Жазира тапты билеттерді, кеше скидкамен сатып алдық."
+    },
+    {
+      "id": "055",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Бека: Соған қазір гостиница брондап, бас қатыватыр. Сол жаққа барып, бассейнге түсем рахаттанып."
+    },
+    {
+      "id": "056",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Бека: Біздің толпа ғой. Төрт взрослый, үш бала."
+    },
+    {
+      "id": "057",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Бека: Короче, біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға."
+    },
+    {
+      "id": "058",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Азамат: Керемет. Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым."
+    },
+    {
+      "id": "059",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "060",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Бека: Жоқ, прикинь, Астанадан прямой рейс бар екен Эйр Астанамен."
+    }
+  ]
+}
