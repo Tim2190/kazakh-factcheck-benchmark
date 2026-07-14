@@ -1,0 +1,136 @@
+{
+  "model": "gemini",
+  "model_id": "gemini-2.5-flash",
+  "run_mode": "batch",
+  "api_type": "gemini",
+  "note": "Verdicts from Colab console; grounding verified in Colab = 100% (15/15). Full JSON with evidence pending upload.",
+  "source_doc": "news_text1",
+  "predictions": [
+    {
+      "id": "021",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "022",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "023",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "024",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "025",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "026",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "027",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "028",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "029",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "030",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "031",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "032",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "033",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "034",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "035",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "036",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "037",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "038",
+      "verdict": "REFUTED",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "039",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "040",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    },
+    {
+      "id": "041",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": null,
+      "evidence": null
+    }
+  ]
+}

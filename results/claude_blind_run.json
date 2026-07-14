@@ -1,29 +1,150 @@
 {
-  "model": "claude (Anthropic, blind subagent run)",
+  "model": "claude",
   "run_mode": "blind_subagent",
   "note": "Fact-checker had access ONLY to source text + claims; ground truth was never provided.",
   "prompt_file": "prompts/factcheck_prompt_kk.txt",
   "source_doc": "leg_text01",
   "predictions": [
-    {"id":"001","verdict":"SUPPORTED","error_type":null,"evidence":"Мемлекеттің ең жоғары құндылығы – адам мен оның өмірі, құқықтары мен бостандықтары.","rationale":"1-бап тұжырымды сөзбе-сөз растайды."},
-    {"id":"002","verdict":"REFUTED","error_type":"entity","evidence":"Басқару үлгісі – президенттік республика.","rationale":"Мәтінде басқару үлгісі монархия емес, президенттік республика."},
-    {"id":"003","verdict":"SUPPORTED","error_type":null,"evidence":"Қазақстан Республикасының елордасы – Астана қаласы.","rationale":"2-бап елорда Астана екенін растайды."},
-    {"id":"004","verdict":"REFUTED","error_type":"entity","evidence":"Қазақстан Республикасында мемлекеттік билік ... Конституция мен заңдар негізінде жүзеге асырылады.","rationale":"Билік әдеби кітаптар емес, Конституция мен заңдар негізінде."},
-    {"id":"005","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"Мәтінде бюджет мөлшері туралы ақпарат жоқ."},
-    {"id":"006","verdict":"REFUTED","error_type":"entity","evidence":"Олардың сипаттамасы және пайдалану тәртібі конституциялық заңда белгіленеді.","rationale":"Модель 'бөлек заң' мен 'конституциялық заңды' сәйкессіздік деп оқыды (эталон бойынша бұл SUPPORTED — шекаралық кейс)."},
-    {"id":"007","verdict":"REFUTED","error_type":"number","evidence":"Қазақстан Республикасының азаматында қос немесе көп азаматтығы болуына жол берілмейді.","rationale":"Үш емес, қос (екі) немесе көп."},
-    {"id":"008","verdict":"REFUTED","error_type":"causal","evidence":"Қазақстан Республикасының халықаралық шарттарында өзгеше белгiленбесе, ... азаматы шет мемлекетке берілмейді.","rationale":"Шарт пен нәтиже орын алмастырылған."},
-    {"id":"009","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"Мәтінде спортпен айналысу міндеті жоқ."},
-    {"id":"010","verdict":"REFUTED","error_type":"number","evidence":"жасырын дауыс беру арқылы жеті жыл мерзімге сайлайды.","rationale":"Он бес емес, жеті жыл."},
-    {"id":"011","verdict":"REFUTED","error_type":"entity","evidence":"Президенті Құрылтайды таратуға құқылы","rationale":"Жоғарғы Сот емес, Құрылтай."},
-    {"id":"012","verdict":"REFUTED","error_type":"entity","evidence":"Қазақстан Республикасының Құрылтайы – заң шығару билігiн жүзеге асыратын ... органы.","rationale":"Конституциялық Сот емес, Құрылтай."},
-    {"id":"013","verdict":"REFUTED","error_type":"number","evidence":"Құрылтайдың өкілеттігі оның бірінші сессиясы ашылған кезден басталады","rationale":"Екінші емес, бірінші сессия."},
-    {"id":"014","verdict":"SUPPORTED","error_type":null,"evidence":"Жиырма бес жасқа толған ... адам Құрылтай депутаты бола алады.","rationale":"Расталады."},
-    {"id":"015","verdict":"SUPPORTED","error_type":null,"evidence":"... сайланған Төраға басқарады.","rationale":"Құрылтайды Төраға басқарады."},
-    {"id":"016","verdict":"REFUTED","error_type":"number","evidence":"Құрылтай қабылдаған заң он күн ішінде ... ұсынылады.","rationale":"Он бір емес, он күн."},
-    {"id":"017","verdict":"REFUTED","error_type":"causal","evidence":"Үкімет енгізген заң жобасы қабылданбаса, Премьер-Министр ... қоюға құқылы.","rationale":"Себеп пен салдар орын алмастырылған."},
-    {"id":"018","verdict":"SUPPORTED","error_type":null,"evidence":"Құрылтай ... бүкіл аумағында міндетті күші бар заң және қаулы қабылдайды.","rationale":"Расталады."},
-    {"id":"019","verdict":"SUPPORTED","error_type":null,"evidence":"Конституциялық Соты – конституциялық бақылауды жүзеге асыратын ... орган.","rationale":"Расталады."},
-    {"id":"020","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"Мәтінде әкімдер есебі туралы ақпарат жоқ."}
-  ]
+    {
+      "id": "001",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Мемлекеттің ең жоғары құндылығы – адам мен оның өмірі, құқықтары мен бостандықтары.",
+      "rationale": "1-бап тұжырымды сөзбе-сөз растайды."
+    },
+    {
+      "id": "002",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Басқару үлгісі – президенттік республика.",
+      "rationale": "Мәтінде басқару үлгісі монархия емес, президенттік республика."
+    },
+    {
+      "id": "003",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының елордасы – Астана қаласы.",
+      "rationale": "2-бап елорда Астана екенін растайды."
+    },
+    {
+      "id": "004",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Қазақстан Республикасында мемлекеттік билік ... Конституция мен заңдар негізінде жүзеге асырылады.",
+      "rationale": "Билік әдеби кітаптар емес, Конституция мен заңдар негізінде."
+    },
+    {
+      "id": "005",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде бюджет мөлшері туралы ақпарат жоқ."
+    },
+    {
+      "id": "006",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Олардың сипаттамасы және пайдалану тәртібі конституциялық заңда белгіленеді.",
+      "rationale": "Модель 'бөлек заң' мен 'конституциялық заңды' сәйкессіздік деп оқыды (эталон бойынша бұл SUPPORTED — шекаралық кейс)."
+    },
+    {
+      "id": "007",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Қазақстан Республикасының азаматында қос немесе көп азаматтығы болуына жол берілмейді.",
+      "rationale": "Үш емес, қос (екі) немесе көп."
+    },
+    {
+      "id": "008",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Қазақстан Республикасының халықаралық шарттарында өзгеше белгiленбесе, ... азаматы шет мемлекетке берілмейді.",
+      "rationale": "Шарт пен нәтиже орын алмастырылған."
+    },
+    {
+      "id": "009",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде спортпен айналысу міндеті жоқ."
+    },
+    {
+      "id": "010",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "жасырын дауыс беру арқылы жеті жыл мерзімге сайлайды.",
+      "rationale": "Он бес емес, жеті жыл."
+    },
+    {
+      "id": "011",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Президенті Құрылтайды таратуға құқылы",
+      "rationale": "Жоғарғы Сот емес, Құрылтай."
+    },
+    {
+      "id": "012",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Қазақстан Республикасының Құрылтайы – заң шығару билігiн жүзеге асыратын ... органы.",
+      "rationale": "Конституциялық Сот емес, Құрылтай."
+    },
+    {
+      "id": "013",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Құрылтайдың өкілеттігі оның бірінші сессиясы ашылған кезден басталады",
+      "rationale": "Екінші емес, бірінші сессия."
+    },
+    {
+      "id": "014",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Жиырма бес жасқа толған ... адам Құрылтай депутаты бола алады.",
+      "rationale": "Расталады."
+    },
+    {
+      "id": "015",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "... сайланған Төраға басқарады.",
+      "rationale": "Құрылтайды Төраға басқарады."
+    },
+    {
+      "id": "016",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Құрылтай қабылдаған заң он күн ішінде ... ұсынылады.",
+      "rationale": "Он бір емес, он күн."
+    },
+    {
+      "id": "017",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Үкімет енгізген заң жобасы қабылданбаса, Премьер-Министр ... қоюға құқылы.",
+      "rationale": "Себеп пен салдар орын алмастырылған."
+    },
+    {
+      "id": "018",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Құрылтай ... бүкіл аумағында міндетті күші бар заң және қаулы қабылдайды.",
+      "rationale": "Расталады."
+    },
+    {
+      "id": "019",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Конституциялық Соты – конституциялық бақылауды жүзеге асыратын ... орган.",
+      "rationale": "Расталады."
+    },
+    {
+      "id": "020",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде әкімдер есебі туралы ақпарат жоқ."
+    }
+  ],
+  "model_id": "claude (Anthropic, blind subagent run)"
 }
