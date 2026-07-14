@@ -50,6 +50,13 @@ benchmark probes.
   hallucination signal.
 - **Primary metric:** 3-class verdict accuracy (+ macro-F1, Cohen's kappa).
   **Secondary/diagnostic:** error-type match on REFUTED items.
+- **Grounding check (validity gate):** every `evidence` quote must occur
+  verbatim in the source (`scripts/check_grounding.py`). A model that answers
+  from memory instead of the provided text produces quotes absent from the
+  source; such a run is INVALID and excluded (moved to `results/quarantine/`).
+  This is a real risk: a run where the full text was not actually ingested
+  scored quotes from the *real* constitution, not the provided modified text,
+  and was caught at ~12% grounding vs 100% for valid runs.
 - **temperature = 0** for API runs (determinism). Hybrid runs (some via API,
   some via web chat because of free tiers) are supported; the run mode of each
   model is recorded in its results file.
@@ -82,6 +89,7 @@ pip install -r requirements.txt
 cp .env.example .env          # then paste your API keys into .env
 python scripts/export_dataset.py                 # refresh csv/jsonl from xlsx
 python scripts/run_factcheck.py --model gemini   # blind run, saves results/*.json
+python scripts/check_grounding.py results/gemini_leg_text01_run.json  # validity gate
 python scripts/score.py results/gemini_leg_text01_run.json
 ```
 

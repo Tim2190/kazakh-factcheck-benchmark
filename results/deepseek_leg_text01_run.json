@@ -1,6 +1,6 @@
 {
   "model": "deepseek",
-  "model_id": "DeepSeek (chat.deepseek.com — confirm exact version)",
+  "model_id": "DeepSeek-V3",
   "run_mode": "chat_batch",
   "prompt_file": "prompts/chat_run_leg_text01.txt",
   "source_doc": "leg_text01",
@@ -8,102 +8,123 @@
     {
       "id": "001",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Мемлекеттің ең жоғары құндылығы – адам мен оның өмірі, құқықтары мен бостандықтары."
     },
     {
       "id": "002",
       "verdict": "REFUTED",
-      "error_type": "entity"
+      "error_type": "entity",
+      "evidence": "Басқару үлгісі – президенттік республика."
     },
     {
       "id": "003",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының елордасы – Астана қаласы."
     },
     {
       "id": "004",
       "verdict": "REFUTED",
-      "error_type": "entity"
+      "error_type": "entity",
+      "evidence": "мемлекеттік билік ... Конституция мен заңдар негізінде жүзеге асырылады."
     },
     {
       "id": "005",
       "verdict": "NOT_ENOUGH_INFO",
-      "error_type": "invented"
+      "error_type": "invented",
+      "evidence": null
     },
     {
       "id": "006",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Олардың сипаттамасы және пайдалану тәртібі конституциялық заңда белгіленеді."
     },
     {
       "id": "007",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының азаматында қос немесе көп азаматтығы болуына жол берілмейді."
     },
     {
       "id": "008",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының халықаралық шарттарында өзгеше белгiленбесе, Қазақстан Республикасының азаматы шет мемлекетке берілмейді."
     },
     {
       "id": "009",
       "verdict": "NOT_ENOUGH_INFO",
-      "error_type": "invented"
+      "error_type": "invented",
+      "evidence": null
     },
     {
       "id": "010",
       "verdict": "REFUTED",
-      "error_type": "number"
+      "error_type": "number",
+      "evidence": "жалпыға бірдей, тең және төте сайлау құқығы негізінде жасырын дауыс беру арқылы жеті жыл мерзімге сайлайды."
     },
     {
       "id": "011",
       "verdict": "REFUTED",
-      "error_type": "entity"
+      "error_type": "entity",
+      "evidence": "Вице-Президентті тағайындауға келісім беруден қайта бас тартылған жағдайда Қазақстан Республикасының Президенті Құрылтайды таратуға құқылы"
     },
     {
       "id": "012",
       "verdict": "REFUTED",
-      "error_type": "entity"
+      "error_type": "entity",
+      "evidence": "Қазақстан Республикасының Құрылтайы – заң шығару билігiн жүзеге асыратын ... орган."
     },
     {
       "id": "013",
       "verdict": "REFUTED",
-      "error_type": "entity"
+      "error_type": "entity",
+      "evidence": "Құрылтайдың өкілеттігі оның бірінші сессиясы ашылған кезден басталады"
     },
     {
       "id": "014",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Жиырма бес жасқа толған, Қазақстан Республикасының азаматтығы бар, оның аумағында соңғы он жыл бойы тұрақты тұрып жатқан адам Құрылтай депутаты бола алады."
     },
     {
       "id": "015",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Құрылтайды ... Төраға басқарады."
     },
     {
       "id": "016",
       "verdict": "REFUTED",
-      "error_type": "number"
+      "error_type": "number",
+      "evidence": "Құрылтай қабылдаған заң он күн ішінде Қазақстан Республикасының Президентіне қол қоюға ұсынылады."
     },
     {
       "id": "017",
       "verdict": "REFUTED",
-      "error_type": "causal"
+      "error_type": "causal",
+      "evidence": "Егер сенімсіздік вотумы туралы ұсыныс ... көпшілік дауысын алмаса, заң жобасы дауысқа салынбай қабылданды деп саналады."
     },
     {
       "id": "018",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Құрылтай Қазақстан Республикасының бүкіл аумағында міндетті күші бар заң және қаулы қабылдайды."
     },
     {
       "id": "019",
       "verdict": "SUPPORTED",
-      "error_type": null
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының Конституциялық Соты – конституциялық бақылауды жүзеге асыратын ... орган."
     },
     {
       "id": "020",
       "verdict": "NOT_ENOUGH_INFO",
-      "error_type": "invented"
+      "error_type": "invented",
+      "evidence": null
     }
-  ]
+  ],
+  "note": "Run via chat.deepseek.com (web chat), batched."
 }
