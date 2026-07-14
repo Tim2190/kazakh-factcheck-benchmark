@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "Kazakh Fact-Checking Benchmark"
+message: "If you use this dataset or code, please cite it as below."
+type: dataset
+authors:
+  # TODO: replace with your full name before publishing to Zenodo
+  - name: "Tim2190"
+    alias: "Tim2190"
+repository-code: "https://github.com/Tim2190/kazakh-factcheck-benchmark"
+abstract: >-
+  A pilot benchmark measuring how reliably large language models verify factual
+  claims in the Kazakh language. 60 hand-built claims over three genres (legal,
+  news, informal code-mixed dialogue), each faithful or deliberately distorted
+  by a fixed taxonomy (number, entity, causal-relation, invented), with gold
+  verdicts (SUPPORTED / REFUTED / NOT_ENOUGH_INFO). Five LLMs are run as
+  open-book fact-checkers; every counted run is validated by a grounding gate.
+keywords:
+  - Kazakh
+  - low-resource NLP
+  - fact-checking
+  - hallucination
+  - large language models
+  - benchmark
+license: CC-BY-4.0
+version: "1.0.0-pilot"
+date-released: "2026-07-14"

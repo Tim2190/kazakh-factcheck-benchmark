@@ -94,8 +94,9 @@ infrastructure."
 
 ## Limitations
 
-- **N = 60** → wide CIs; rankings are indicative. A paired test (McNemar) on
-  these results would not find significant pairwise differences.
+- **N = 60** → wide CIs; rankings are indicative. Pairwise McNemar exact tests
+  confirm this: **every** model-vs-model p-value is ≥ 0.375 (all ≫ 0.05), so
+  no pairwise difference is statistically significant (see `leaderboard.py`).
 - **Single annotator**; borderline items reviewed during construction. Claim 006
   ("constitutional law" vs "separate law") remains a genuine borderline where 2
   models reasonably disagreed with the gold. Two other edge cases were fixed

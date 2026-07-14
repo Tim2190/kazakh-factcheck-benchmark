@@ -121,6 +121,32 @@ def main():
             print(f"{(str(c)+'/'+str(nn)):>14}", end="")
         print()
 
+    # McNemar exact test on each pair (paired design, same claims)
+    def mcnemar_p(b, c):
+        n = b + c
+        if n == 0:
+            return 1.0
+        k = min(b, c)
+        return min(2 * sum(math.comb(n, i) for i in range(k + 1)) / (2 ** n), 1.0)
+
+    names = [r["model"] for r in rows]
+    print("\n-- McNemar exact p-values (pairwise, paired claims) --")
+    print("p>0.05 = difference not statistically significant")
+    print(f"{'':16}" + "".join(f"{n[:8]:>10}" for n in names))
+    for a in names:
+        print(f"{a:16}", end="")
+        for b in names:
+            if a == b:
+                print(f"{'—':>10}", end="")
+                continue
+            common = [c for c in gold if c in models[a]["preds"] and c in models[b]["preds"]]
+            nb = sum(1 for c in common if models[a]["preds"][c] == gold[c]["gt"]
+                     and models[b]["preds"][c] != gold[c]["gt"])
+            nc = sum(1 for c in common if models[a]["preds"][c] != gold[c]["gt"]
+                     and models[b]["preds"][c] == gold[c]["gt"])
+            print(f"{mcnemar_p(nb, nc):>10.3f}", end="")
+        print()
+
 
 if __name__ == "__main__":
     main()

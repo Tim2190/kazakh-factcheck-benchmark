@@ -102,7 +102,14 @@ run via web chat: generate the prompt with
 `results/<model>_<name>_run.json`.
 
 Run `python scripts/leaderboard.py` for the combined table across all sources
-(accuracy, Wilson CIs, macro-F1, per-type and per-source breakdowns).
+(accuracy, Wilson CIs, macro-F1, per-type/per-source breakdowns, and pairwise
+McNemar tests). **See [`RESULTS.md`](RESULTS.md) for the full pilot report and
+findings.**
+
+## License & citation
+
+Dataset/texts/outputs: CC BY 4.0; code: MIT (see [`LICENSE`](LICENSE)). Please
+cite via [`CITATION.cff`](CITATION.cff).
 
 ## Models
 
