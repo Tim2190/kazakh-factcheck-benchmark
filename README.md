@@ -51,12 +51,12 @@ benchmark probes.
 - **Primary metric:** 3-class verdict accuracy (+ macro-F1, Cohen's kappa).
   **Secondary/diagnostic:** error-type match on REFUTED items.
 - **Grounding check (validity gate):** every `evidence` quote must occur
-  verbatim in the source (`scripts/check_grounding.py`). A model that answers
-  from memory instead of the provided text produces quotes absent from the
-  source; such a run is INVALID and excluded (moved to `results/quarantine/`).
-  This is a real risk: a run where the full text was not actually ingested
-  scored quotes from the *real* constitution, not the provided modified text,
-  and was caught at ~12% grounding vs 100% for valid runs.
+  verbatim in the source (`scripts/check_grounding.py`, case-insensitive). A
+  model that answers from memory instead of the provided text produces quotes
+  absent from the source; such a run is INVALID and excluded. This is a real
+  risk: an early trial where the full text was not actually ingested scored
+  quotes from the *real* constitution rather than the provided text and was
+  caught at ~12% grounding, versus 100% for every counted run.
 - **temperature = 0** for API runs (determinism). Hybrid runs (some via API,
   some via web chat because of free tiers) are supported; the run mode of each
   model is recorded in its results file.
@@ -66,16 +66,18 @@ benchmark probes.
 ```
 factcheck_dataset.xlsx        Master dataset (hand-edited)
 data/dataset.csv|.jsonl       Git-diffable export of the dataset (run export_dataset.py)
-sources/leg_text01.txt        Exact source text fed to models
-leg_text01.docx               Original source document
-prompts/factcheck_prompt_kk.txt   The exact fact-checker prompt (Kazakh)
-scripts/models.json           Model registry (ids/base_urls; keys via env only)
-scripts/run_factcheck.py      Blind multi-provider runner
-scripts/score.py              Scoring (accuracy, F1, kappa, confusion)
-scripts/export_dataset.py     xlsx -> csv/jsonl
-scripts/extract_source.py     docx -> txt
+sources/*.txt                 Exact source texts fed to models (leg_text01, news_text1, …)
+prompts/factcheck_prompt_kk.txt   The per-claim fact-checker prompt (Kazakh)
+prompts/chat_run_<source>.txt     Bundled prompt for web-chat runs
+scripts/models.json           Model registry for API runs (Gemini)
+scripts/run_factcheck.py      API runner (per-claim or --batch)
+scripts/make_chat_prompt.py   Build the bundled chat prompt for a source
+scripts/check_grounding.py    Validity gate: evidence must occur in the source
+scripts/score.py              Per-run scoring (accuracy, F1, kappa, confusion)
+scripts/leaderboard.py        Combined table across all sources/models
+scripts/export_dataset.py     xlsx -> csv/jsonl ; extract_source.py  docx -> txt
 results/                      Raw model outputs (verdicts + evidence)
-.env.example                  Template for API keys (.env is git-ignored)
+.env.example                  Template for the Gemini key (.env is git-ignored)
 ```
 
 Everything except the API keys is committed, so the full method — prompt, code,
@@ -88,20 +90,34 @@ pip install -r requirements.txt
 
 cp .env.example .env          # then paste your API keys into .env
 python scripts/export_dataset.py                 # refresh csv/jsonl from xlsx
-python scripts/run_factcheck.py --model gemini   # blind run, saves results/*.json
-python scripts/check_grounding.py results/gemini_leg_text01_run.json  # validity gate
-python scripts/score.py results/gemini_leg_text01_run.json
+python scripts/run_factcheck.py --model gemini --batch --source news_text1
+python scripts/check_grounding.py results/gemini_news_text1_run.json  # validity gate
+python scripts/score.py results/gemini_news_text1_run.json
 ```
 
-Add or point a model at your provider by editing `scripts/models.json`
-(`model_id`, `base_url`, and which env var holds its key). Any OpenAI-compatible
-host (Together, Groq, OpenRouter, Fireworks, DeepSeek…) works via
-`api_type: "openai"`.
+Only Gemini is run via API (`scripts/models.json`). The other four models are
+run via web chat: generate the prompt with
+`python scripts/make_chat_prompt.py --source <name>`, paste
+`prompts/chat_run_<name>.txt` into the model's chat, and save its JSON reply to
+`results/<model>_<name>_run.json`.
+
+Run `python scripts/leaderboard.py` for the combined table across all sources
+(accuracy, Wilson CIs, macro-F1, per-type and per-source breakdowns).
+
+## Models
+
+Five models, each from a different lab, all validated at 100% grounding:
+**Claude** (Anthropic, blind subagent), **Gemini 2.5 Flash** (Google, API),
+**Qwen3.7-Plus** (Alibaba, chat), **DeepSeek-V3** (chat), **Kimi K2.6**
+(Moonshot, chat). Only Gemini runs via API; the rest via web chat with the
+`prompts/chat_run_<source>.txt` prompt.
 
 ## Current status
 
-- 1 source (`leg_text01` — Constitution), **20 claims**, all categories covered.
-- Baseline run recorded: **Claude** (blind), 19/20 = 95% verdict accuracy;
-  the single miss is `id 006`, a deliberately borderline paraphrase.
-- Planned: add source texts 2 and 3, expand and harden the claim set, run
-  Gemini and Llama (via Groq), then compile a report.
+- 2 sources: `leg_text01` (Constitution, 20 claims) + `news_text1` (news, 21).
+- All 5 models run on both; combined so far: Claude 39/41, Gemini/Qwen/Kimi
+  38/41, DeepSeek 37/41. Confidence intervals overlap — with 41 claims the
+  ranking is not yet statistically separable; the robust finding is that
+  causal-relation inversions are the systematic weak spot.
+- Planned: source text 3 (informal, code-mixed) to reach ~60 and add
+  discriminating (causal / pragmatic) items, then compile the report.
