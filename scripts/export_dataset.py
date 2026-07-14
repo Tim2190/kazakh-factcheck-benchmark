@@ -18,40 +18,28 @@ XLSX = os.path.join(ROOT, "factcheck_dataset.xlsx")
 OUT_CSV = os.path.join(ROOT, "data", "dataset.csv")
 OUT_JSONL = os.path.join(ROOT, "data", "dataset.jsonl")
 
-COLUMNS = [
-    "id", "source_doc", "source_passage", "claim_kk", "claim_type",
-    "what_changed", "ground_truth",
-    "gemini_label", "llama_label", "deepseek_label", "claude_label",
-    "correct?",
-]
-
-
 def read_rows():
+    """Read all columns present in the sheet header (dynamic, so new model
+    label columns are picked up automatically)."""
     wb = openpyxl.load_workbook(XLSX, data_only=True)
     ws = wb.worksheets[0]
-    header = [(c.value or "").strip() if c.value else "" for c in ws[1]]
-    idx = {name: header.index(name) for name in COLUMNS if name in header}
+    columns = [str(c.value).strip() for c in ws[1] if c.value and str(c.value).strip()]
     rows = []
     for r in ws.iter_rows(min_row=2, values_only=True):
         if not r or r[0] is None or not str(r[0]).strip():
             continue
-        row = {}
-        for name in COLUMNS:
-            if name in idx:
-                v = r[idx[name]]
-                row[name] = "" if v is None else str(v).strip()
-            else:
-                row[name] = ""
+        row = {name: ("" if r[i] is None else str(r[i]).strip())
+               for i, name in enumerate(columns)}
         rows.append(row)
-    return rows
+    return columns, rows
 
 
 def main():
     os.makedirs(os.path.join(ROOT, "data"), exist_ok=True)
-    rows = read_rows()
+    columns, rows = read_rows()
 
     with open(OUT_CSV, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=COLUMNS)
+        w = csv.DictWriter(f, fieldnames=columns)
         w.writeheader()
         w.writerows(rows)
 
