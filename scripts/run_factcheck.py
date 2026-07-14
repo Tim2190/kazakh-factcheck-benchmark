@@ -70,6 +70,20 @@ def extract_json(text):
         return None
 
 
+def extract_json_array(text):
+    """Pull the first JSON array out of a model reply (for --batch)."""
+    if text is None:
+        return None
+    text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.MULTILINE).strip()
+    m = re.search(r"\[.*\]", text, flags=re.DOTALL)
+    if not m:
+        return None
+    try:
+        return json.loads(m.group(0))
+    except json.JSONDecodeError:
+        return None
+
+
 # ---- provider adapters: each returns the raw assistant text ---------------
 
 def call_openai(cfg, key, prompt):
@@ -136,6 +150,9 @@ def main():
     ap.add_argument("--model", required=True, help="key in scripts/models.json")
     ap.add_argument("--source", default="leg_text01", help="source doc id")
     ap.add_argument("--out", default=None, help="output json path")
+    ap.add_argument("--batch", action="store_true",
+                    help="send full doc + all claims in ONE request (needed for "
+                         "free tiers with low daily request caps, e.g. Gemini)")
     args = ap.parse_args()
 
     load_env()
@@ -160,25 +177,49 @@ def main():
     claims = [c for c in claims if c.get("source_doc") == args.source]
 
     predictions = []
-    for c in claims:
-        prompt = build_prompt(source_text, c["claim_kk"])
+    if args.batch:
+        from make_chat_prompt import build_batch_prompt
+        prompt = build_batch_prompt(source_text, claims)
         try:
             raw = call_with_retry(adapter, cfg, key, prompt)
-            parsed = extract_json(raw)
+            arr = extract_json_array(raw) or []
         except Exception as e:  # noqa: BLE001
-            raw, parsed = f"ERROR: {e}", None
-        rec = {
-            "id": c["id"],
-            "verdict": (parsed or {}).get("verdict"),
-            "error_type": (parsed or {}).get("error_type"),
-            "evidence": (parsed or {}).get("evidence"),
-            "rationale": (parsed or {}).get("rationale"),
-            "parse_ok": parsed is not None,
-            "raw_response": raw,
-        }
-        predictions.append(rec)
-        print(f"  {c['id']}: {rec['verdict']}"
-              f"{'' if rec['parse_ok'] else '  [PARSE FAIL]'}")
+            raw, arr = f"ERROR: {e}", []
+        by_id = {str(p.get("id")).zfill(3): p for p in arr}
+        for c in claims:
+            p = by_id.get(str(c["id"]).zfill(3), {})
+            ok = bool(p)
+            predictions.append({
+                "id": c["id"],
+                "verdict": p.get("verdict"),
+                "error_type": p.get("error_type"),
+                "evidence": p.get("evidence"),
+                "rationale": p.get("rationale"),
+                "parse_ok": ok,
+                "raw_response": raw if not arr else None,
+            })
+            print(f"  {c['id']}: {p.get('verdict')}"
+                  f"{'' if ok else '  [MISSING IN OUTPUT]'}")
+    else:
+        for c in claims:
+            prompt = build_prompt(source_text, c["claim_kk"])
+            try:
+                raw = call_with_retry(adapter, cfg, key, prompt)
+                parsed = extract_json(raw)
+            except Exception as e:  # noqa: BLE001
+                raw, parsed = f"ERROR: {e}", None
+            rec = {
+                "id": c["id"],
+                "verdict": (parsed or {}).get("verdict"),
+                "error_type": (parsed or {}).get("error_type"),
+                "evidence": (parsed or {}).get("evidence"),
+                "rationale": (parsed or {}).get("rationale"),
+                "parse_ok": parsed is not None,
+                "raw_response": raw,
+            }
+            predictions.append(rec)
+            print(f"  {c['id']}: {rec['verdict']}"
+                  f"{'' if rec['parse_ok'] else '  [PARSE FAIL]'}")
 
     os.makedirs(RESULTS_DIR, exist_ok=True)
     out = args.out or os.path.join(RESULTS_DIR, f"{args.model}_{args.source}_run.json")
@@ -188,6 +229,7 @@ def main():
         "base_url": cfg["base_url"],
         "api_type": cfg["api_type"],
         "temperature": TEMPERATURE,
+        "run_mode": "batch" if args.batch else "per_claim",
         "prompt_file": "prompts/factcheck_prompt_kk.txt",
         "source_doc": args.source,
         "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

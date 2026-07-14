@@ -3,9 +3,10 @@
 
   "gemini": {
     "api_type": "gemini",
-    "model_id": "gemini-2.0-flash",
+    "model_id": "gemini-2.5-flash",
     "base_url": "https://generativelanguage.googleapis.com/v1beta",
-    "api_key_env": "GEMINI_API_KEY"
+    "api_key_env": "GEMINI_API_KEY",
+    "_note": "Free tier: 250K TPM (fits the full doc), but only 20 RPD — use --batch (1 request/run). gemini-2.0-flash has 0 quota; alternatives with quota: gemini-3.1-flash-lite (500 RPD), gemma-4-31b."
   },
 
   "llama": {
