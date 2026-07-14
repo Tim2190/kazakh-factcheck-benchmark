@@ -24,12 +24,14 @@ TYPE_TO_ERR = {
 }
 
 
-def load_gold():
+def load_gold(source_doc=None):
     gold = {}
     for line in open(DATASET_JSONL, encoding="utf-8"):
         if not line.strip():
             continue
         row = json.loads(line)
+        if source_doc and row.get("source_doc") != source_doc:
+            continue
         gold[str(row["id"])] = {
             "ground_truth": (row.get("ground_truth") or "").strip().upper(),
             "claim_type": row.get("claim_type") or "",
@@ -71,7 +73,7 @@ def main():
     if isinstance(run, list):
         run = {"model": os.path.basename(sys.argv[1]), "predictions": run}
     preds = {str(p["id"]).zfill(3): p for p in run["predictions"]}
-    gold = load_gold()
+    gold = load_gold(run.get("source_doc"))
 
     pairs, by_type = [], collections.defaultdict(lambda: [0, 0])
     confusion = collections.defaultdict(int)
