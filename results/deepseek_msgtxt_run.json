@@ -2,6 +2,7 @@
   "model": "deepseek",
   "model_id": "DeepSeek-V3",
   "run_mode": "chat_batch",
+  "note": " Re-run after 052 rework.",
   "prompt_file": "prompts/chat_run_msgtxt.txt",
   "source_doc": "msgtxt",
   "predictions": [
@@ -119,6 +120,5 @@
       "error_type": "entity",
       "evidence": "Астанадан прямой рейс бар екен Эйр Астанамен."
     }
-  ],
-  "stale_note": "Claim 052 was reworded after this run; 052 verdict here is for the OLD claim. Re-run pending."
+  ]
 }

@@ -2,7 +2,7 @@
   "model": "kimi",
   "model_id": "moonshotai/Kimi-K2.6",
   "run_mode": "chat_batch",
-  "note": "Routed via HuggingChat Omni.",
+  "note": "Routed via HuggingChat Omni. Re-run after 052 rework.",
   "prompt_file": "prompts/chat_run_msgtxt.txt",
   "source_doc": "msgtxt",
   "predictions": [
@@ -68,9 +68,9 @@
     },
     {
       "id": "052",
-      "verdict": "NOT_ENOUGH_INFO",
-      "error_type": "invented",
-      "evidence": null
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Азамат: Скриптонит қой, полный живой звук болады деді. Прикинь в ате толпа фанатов наверное будет, бакад аман болсын."
     },
     {
       "id": "053",
@@ -120,6 +120,5 @@
       "error_type": "entity",
       "evidence": "Бека: Жоқ, прикинь, Астанадан прямой рейс бар екен Эйр Астанамен."
     }
-  ],
-  "stale_note": "Claim 052 was reworded after this run; 052 verdict here is for the OLD claim. Re-run pending."
+  ]
 }
