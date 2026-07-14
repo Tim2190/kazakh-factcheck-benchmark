@@ -1,0 +1,184 @@
+{
+  "model": "gemini",
+  "model_id": "gemini-2.5-flash",
+  "base_url": "https://generativelanguage.googleapis.com/v1beta",
+  "api_type": "gemini",
+  "temperature": 0,
+  "run_mode": "batch",
+  "prompt_file": "prompts/factcheck_prompt_kk.txt",
+  "source_doc": "msgtxt",
+  "timestamp_utc": "2026-07-14T16:49:33Z",
+  "predictions": [
+    {
+      "id": "042",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға. ... Астанадан прямой рейс бар екен Эйр Астанамен. Жазира тапты билеттерді, кеше скидкамен сатып алдық. ... Біздің толпа ғой. Төрт взрослый, үш бала.",
+      "rationale": "Мәтінде Беканың 'біз' деп айтуы және Жазираның билеттерді тапқаны, сондай-ақ топтың құрамы (төрт ересек, үш бала) олардың отбасымен тікелей рейспен Камраньға ұшатынын тікелей растайды.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "043",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым.",
+      "rationale": "Азаматтың 20 қыркүйекте Алматыдағы Медеуде өтетін концертке баратыны мәтінде тікелей айтылған.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "044",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Төрт взрослый, үш бала.",
+      "rationale": "Мәтінде Вьетнамға ұшатын топта үш бала бар екені айтылған, бес емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "045",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде Азаматтың концерттен кейін достарымен Медеуде сырғанақ тебуді жоспарлап отырғаны туралы ешқандай ақпарат жоқ.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "046",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Скриптонит қой, полный живой звук болады деді.",
+      "rationale": "Мәтінде Азаматтың Скриптониттің концертіне баратыны айтылған, Jah Khalib-тің емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "047",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Жазира тапты билеттерді, кеше скидкамен сатып алдық.",
+      "rationale": "Мәтінде билеттерді Жазира тапқаны айтылған, Бека өзі тапқан жоқ.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "048",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Төрт взрослый, үш бала.",
+      "rationale": "Мәтінде Вьетнамға баратын топта төрт ересек және үш бала бар екені тікелей айтылған.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "049",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Жазира тапты билеттерді, кеше скидкамен сатып алдық.",
+      "rationale": "Мәтінде Жазираның билеттерді тауып, оларды жеңілдікпен сатып алғандары айтылған ('кеше скидкамен сатып алдық').",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "050",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық.",
+      "rationale": "Мәтінде Беканың отбасымен 12 тамызда ұшатыны айтылған, 15 тамызда емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "051",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде Беканың отбасының Вьетнамда қандай қонақүйде тоқтайтыны туралы ешқандай ақпарат жоқ, тек 'гостиница брондап, бас қатыватыр' деп айтылған.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "052",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Прикинь в ате толпа фанатов наверное будет, бакад аман болсын.",
+      "rationale": "Мәтінде Азамат фанаттардың көп болатынын болжайды, бірақ бұл концерттің өту себебі ретінде көрсетілмеген. Себеп-салдар байланысы қате берілген.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "053",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде Азаматтың транзитпен айналысатын компанияда қызмет ететіні туралы ешқандай ақпарат жоқ. Ол тек Бекадан 'Қайтадан транзитпен ба?' деп сұрайды.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "054",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Астанадан прямой рейс бар екен Эйр Астанамен. Жазира тапты билеттерді, кеше скидкамен сатып алдық.",
+      "rationale": "Мәтінде билеттердің ұшудан бұрын ('кеше скидкамен сатып алдық') сатып алынғаны айтылған, ұшып барғаннан кейін емес. Уақыт реті қате көрсетілген.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "055",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Соған қазір гостиница брондап, бас қатыватыр. Сол жаққа барып, бассейнге түсем рахаттанып.",
+      "rationale": "Мәтінде Беканың қазір қонақүй брондап жатқаны айтылған, яғни бөлме бассейнге түскеннен кейін емес, оған дейін жалданады. Уақыт реті қате көрсетілген.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "056",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Төрт взрослый, үш бала.",
+      "rationale": "Мәтінде Вьетнамға баратын топта төрт ересек бар екені айтылған, екі емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "057",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "біз 12 тамызда Камраньға ұшатын болдық. Вьетнамға.",
+      "rationale": "Мәтінде Беканың отбасы демалысқа Вьетнамға ұшатыны айтылған, Түркияға емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "058",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Ал мен 20 қыркүйекте Алматыға барам, там Медеуде концерт болады, соған вип билет алдым.",
+      "rationale": "Мәтінде Азаматтың концертке 20 қыркүйекте баратыны айтылған, 10 қыркүйекте емес.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "059",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null,
+      "rationale": "Мәтінде Жазираның билеттерді Kaspi арқылы бөліп төлеуге алғаны туралы ешқандай ақпарат жоқ, тек жеңілдікпен сатып алғаны айтылған.",
+      "parse_ok": true,
+      "raw_response": null
+    },
+    {
+      "id": "060",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Астанадан прямой рейс бар екен Эйр Астанамен.",
+      "rationale": "Мәтінде Беканың отбасы Вьетнамға Эйр Астана авиакомпаниясымен ұшатыны айтылған, Scat авиакомпаниясымен емес.",
+      "parse_ok": true,
+      "raw_response": null
+    }
+  ]
+}
