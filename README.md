@@ -81,8 +81,8 @@ pip install -r requirements.txt
 
 cp .env.example .env          # then paste your API keys into .env
 python scripts/export_dataset.py                 # refresh csv/jsonl from xlsx
-python scripts/run_factcheck.py --model deepseek # blind run, saves results/*.json
-python scripts/score.py results/deepseek_leg_text01_run.json
+python scripts/run_factcheck.py --model gemini   # blind run, saves results/*.json
+python scripts/score.py results/gemini_leg_text01_run.json
 ```
 
 Add or point a model at your provider by editing `scripts/models.json`
@@ -96,4 +96,4 @@ host (Together, Groq, OpenRouter, Fireworks, DeepSeek…) works via
 - Baseline run recorded: **Claude** (blind), 19/20 = 95% verdict accuracy;
   the single miss is `id 006`, a deliberately borderline paraphrase.
 - Planned: add source texts 2 and 3, expand and harden the claim set, run
-  Gemini / Llama / DeepSeek, then compile a report.
+  Gemini and Llama (via Groq), then compile a report.

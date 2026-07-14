@@ -8,18 +8,12 @@
     "api_key_env": "GEMINI_API_KEY"
   },
 
-  "deepseek": {
-    "api_type": "openai",
-    "model_id": "deepseek-chat",
-    "base_url": "https://api.deepseek.com/v1",
-    "api_key_env": "DEEPSEEK_API_KEY"
-  },
-
   "llama": {
     "api_type": "openai",
-    "model_id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
-    "base_url": "https://api.together.xyz/v1",
-    "api_key_env": "LLAMA_API_KEY"
+    "model_id": "llama-3.3-70b-versatile",
+    "base_url": "https://api.groq.com/openai/v1",
+    "api_key_env": "LLAMA_API_KEY",
+    "_note": "Served via Groq (OpenAI-compatible). LLAMA_API_KEY holds the Groq key."
   },
 
   "claude": {
