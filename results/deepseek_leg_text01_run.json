@@ -1,0 +1,109 @@
+{
+  "model": "deepseek",
+  "model_id": "DeepSeek (chat.deepseek.com — confirm exact version)",
+  "run_mode": "chat_batch",
+  "prompt_file": "prompts/chat_run_leg_text01.txt",
+  "source_doc": "leg_text01",
+  "predictions": [
+    {
+      "id": "001",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "002",
+      "verdict": "REFUTED",
+      "error_type": "entity"
+    },
+    {
+      "id": "003",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "004",
+      "verdict": "REFUTED",
+      "error_type": "entity"
+    },
+    {
+      "id": "005",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented"
+    },
+    {
+      "id": "006",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "007",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "008",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "009",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented"
+    },
+    {
+      "id": "010",
+      "verdict": "REFUTED",
+      "error_type": "number"
+    },
+    {
+      "id": "011",
+      "verdict": "REFUTED",
+      "error_type": "entity"
+    },
+    {
+      "id": "012",
+      "verdict": "REFUTED",
+      "error_type": "entity"
+    },
+    {
+      "id": "013",
+      "verdict": "REFUTED",
+      "error_type": "entity"
+    },
+    {
+      "id": "014",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "015",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "016",
+      "verdict": "REFUTED",
+      "error_type": "number"
+    },
+    {
+      "id": "017",
+      "verdict": "REFUTED",
+      "error_type": "causal"
+    },
+    {
+      "id": "018",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "019",
+      "verdict": "SUPPORTED",
+      "error_type": null
+    },
+    {
+      "id": "020",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented"
+    }
+  ]
+}
