@@ -73,9 +73,12 @@
     },
     {
       "id": "032",
-      "verdict": "REFUTED",
-      "error_type": "number",
-      "evidence": "Өткен маусымның қорытындысы бойынша бес жылу электр орталығы аса жоғары тәуекелдің «қызыл» аймағынан шығарылып, үш ЖЭО «жасыл» аймаққа ауыстырылды."
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Өткен маусымның қорытындысы бойынша бес жылу электр орталығы аса жоғары тәуекелдің «қызыл» аймағынан шығарылып, үш ЖЭО «жасыл» аймаққа ауыстырылды.",
+      "verdict_original": "REFUTED",
+      "error_type_original": "number",
+      "correction_note": "Post-hoc: claim 032 corrected (өтетін болады→өтті). Original REFUTED was based solely on the past/future tense artifact now removed."
     },
     {
       "id": "033",
@@ -130,6 +133,14 @@
       "verdict": "NOT_ENOUGH_INFO",
       "error_type": "invented",
       "evidence": null
+    }
+  ],
+  "corrections": [
+    {
+      "id": "032",
+      "from": "REFUTED",
+      "to": "SUPPORTED",
+      "reason": "claim tense artifact removed; model's sole objection (tense) no longer applies"
     }
   ]
 }
