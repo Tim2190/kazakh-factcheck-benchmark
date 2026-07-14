@@ -24,7 +24,9 @@ MIN_LEN = 15
 
 
 def norm(s):
-    return re.sub(r"\s+", " ", (s or "")).strip()
+    # case-insensitive + whitespace-collapsed, so a model capitalising the first
+    # letter of a mid-sentence quote isn't falsely flagged as ungrounded.
+    return re.sub(r"\s+", " ", (s or "")).strip().casefold()
 
 
 def main():
