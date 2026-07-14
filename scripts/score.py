@@ -66,7 +66,11 @@ def main():
     if len(sys.argv) < 2:
         sys.exit("Usage: python scripts/score.py <results/xxx_run.json>")
     run = json.load(open(sys.argv[1], encoding="utf-8"))
-    preds = {str(p["id"]): p for p in run["predictions"]}
+    # accept either the runner format {"predictions":[...]} or a bare JSON
+    # array pasted from a chat run.
+    if isinstance(run, list):
+        run = {"model": os.path.basename(sys.argv[1]), "predictions": run}
+    preds = {str(p["id"]).zfill(3): p for p in run["predictions"]}
     gold = load_gold()
 
     pairs, by_type = [], collections.defaultdict(lambda: [0, 0])
