@@ -3,8 +3,8 @@ title: "Kazakh Language Understanding Benchmark"
 message: "If you use this dataset or code, please cite it as below."
 type: dataset
 authors:
-  # TODO: replace with your full name before publishing to Zenodo
-  - name: "Tim2190"
+  - given-names: "Timur"
+    family-names: "Seydalin"
     alias: "Tim2190"
 repository-code: "https://github.com/Tim2190/kazakh-factcheck-benchmark"
 abstract: >-
