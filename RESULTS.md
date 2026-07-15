@@ -1,4 +1,8 @@
-# Results — Kazakh Fact-Checking Benchmark (pilot)
+# Results — Track A: Fact-Checking (pilot)
+
+Part of the Kazakh Language Understanding Benchmark (see `README.md`). Track B
+(idiom comprehension) results are compiled separately once all models are run.
+
 
 **Scope:** 60 claims over 3 sources of different genres, 5 LLMs from 5 labs.
 Open-book protocol (full source + one claim; gold never shown). Every counted

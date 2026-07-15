@@ -1,130 +1,130 @@
-# Kazakh Fact-Checking Benchmark
+# Kazakh Language Understanding Benchmark
 
-An open benchmark that measures how reliably modern LLMs verify factual claims
-**in the Kazakh language**, and on which kinds of distortion they most often
-"go blind" or hallucinate.
+How well do modern LLMs actually understand **Kazakh** (a low-resource
+language)? This benchmark probes it from two complementary angles.
 
-## Idea
+| Track | Ability probed | Task | Data | Status |
+|-------|----------------|------|------|--------|
+| **A — Fact-checking** | grounded reasoning / reading comprehension | given a source text + a claim, judge SUPPORTED / REFUTED / NOT_ENOUGH_INFO | 60 claims, 3 genres | ✅ complete |
+| **B — Idioms** | figurative & lexical competence (closed-book) | give the meaning of a Kazakh idiom; two-phase (with/without a usage example) | 30 idioms | 🔄 in progress |
 
-Low-citation, recently published Kazakh source texts are used. From each text a
-set of claims is hand-built: some **faithful** (paraphrases of the text), some
-**deliberately distorted** by well-defined categories. Each claim has a fixed
-gold verdict. Several LLMs are run as fact-checkers over these claims, and their
-verdicts are compared against the gold to see how trustworthy they are.
+Five LLMs from five labs are evaluated: **Claude** (Anthropic), **Gemini 2.5
+Flash** (Google), **Qwen3.7-Plus** (Alibaba), **DeepSeek-V3**, **Kimi K2.6**
+(Moonshot). Only Gemini runs via API (temperature 0); the others via web chat;
+Claude via a blind isolated agent. The two tracks are deliberately different:
+Track A tests reasoning over *given* evidence, Track B tests *stored* knowledge
+of Kazakh phraseology.
 
-Using a **recently adopted** source (the 2026 Constitution of the Republic of
-Kazakhstan) is deliberate: models have not yet "memorized" it, so they must
-actually read the provided text rather than recall it. The full text lives in
-`sources/leg_text01.txt` — everything in it is treated as authoritative for
-scoring.
+---
 
-## Verdict labels
+## Track A — Grounded fact-checking
 
-| Label | Meaning |
-|-------|---------|
-| `SUPPORTED` | The source text directly confirms the claim. |
-| `REFUTED` | The source text directly contradicts the claim. |
-| `NOT_ENOUGH_INFO` | The text says nothing about the claim's topic. |
+Low-citation, recently published Kazakh texts are used (models can't answer
+from memory — see the grounding gate below). From each text a set of claims is
+hand-built: some faithful, some deliberately distorted by a fixed taxonomy,
+each with a fixed gold verdict.
 
-## Distortion taxonomy (`claim_type`)
+**Verdict labels:** `SUPPORTED` (text confirms) · `REFUTED` (text contradicts)
+· `NOT_ENOUGH_INFO` (text is silent).
 
-| `claim_type` | Gold verdict | What was changed |
-|--------------|--------------|------------------|
-| `real` | SUPPORTED | Faithful paraphrase of the text. |
-| `fake_number` | REFUTED | A number, term, or quantity was altered. |
-| `fake_entity` | REFUTED | A name, body, office, or concept was swapped. |
-| `fake_causal` | REFUTED | A cause↔effect / condition↔result relation was inverted. |
-| `fake_invented` | NOT_ENOUGH_INFO | A fully invented statement absent from the text. |
+**Distortion taxonomy (`claim_type`):**
 
-Note: `fake_invented` maps to **NOT_ENOUGH_INFO**, not REFUTED — an invented
-statement is not "contradicted" by the text, the text is simply silent on it.
-Distinguishing "false" from "unaddressed" is one of the hardest behaviours this
-benchmark probes.
+| `claim_type` | Gold | What was changed |
+|--------------|------|------------------|
+| `real` | SUPPORTED | faithful paraphrase |
+| `fake_number` | REFUTED | a number/date/quantity altered |
+| `fake_entity` | REFUTED | a name/body/role/concept swapped (incl. speaker attribution) |
+| `fake_causal` | REFUTED | a cause↔effect / condition↔result relation inverted |
+| `fake_invented` | NOT_ENOUGH_INFO | a fully invented statement absent from the text |
 
-## Run protocol
+**Sources (genres):** `leg_text01` (Constitution, legal, 20) · `news_text1`
+(government economic report, 21) · `msgtxt` (informal code-mixed KK/RU messenger
+dialogue, 19).
 
-- **Open-book, one claim per call.** The model receives the *entire* source text
-  plus a single claim. The gold verdict and `claim_type` are **never** sent.
-- **Output:** verdict + (if not SUPPORTED) error type + a verbatim `evidence`
-  quote from the text. A missing/invented quote on a REFUTED verdict is a
-  hallucination signal.
-- **Primary metric:** 3-class verdict accuracy (+ macro-F1, Cohen's kappa).
-  **Secondary/diagnostic:** error-type match on REFUTED items.
-- **Grounding check (validity gate):** every `evidence` quote must occur
-  verbatim in the source (`scripts/check_grounding.py`, case-insensitive). A
-  model that answers from memory instead of the provided text produces quotes
-  absent from the source; such a run is INVALID and excluded. This is a real
-  risk: an early trial where the full text was not actually ingested scored
-  quotes from the *real* constitution rather than the provided text and was
-  caught at ~12% grounding, versus 100% for every counted run.
-- **temperature = 0** for API runs (determinism). Hybrid runs (some via API,
-  some via web chat because of free tiers) are supported; the run mode of each
-  model is recorded in its results file.
+**Run protocol:** open-book, one claim per call (or batched for chat). The model
+gets the *entire* source + one claim; gold is never sent. Output: verdict +
+(if not SUPPORTED) error type + a verbatim `evidence` quote.
+
+**Grounding gate (validity):** every `evidence` quote must occur verbatim in the
+source (`scripts/check_grounding.py`). A model answering from memory produces
+quotes absent from the source and is excluded. All five counted models scored
+100% grounding; an early trial that did not ingest the text (quoting the *real*
+constitution from memory) was caught at ~12% and dropped.
+
+**Result:** all models 92–97%; the ranking is not statistically separable
+(overlapping Wilson CIs; McNemar p ≥ 0.375). The one systematic weak spot is
+**causal-relation inversions**. Full report → [`RESULTS.md`](RESULTS.md).
+
+## Track B — Idiom comprehension
+
+30 Kazakh idioms (many rare/literary, native-verified). Each has a Russian
+meaning-equivalent, a usage example in Kazakh, and its translation.
+
+**Two-phase task:**
+1. **Phase 1** — the bare idiom → the model gives its figurative meaning + the
+   closest Russian equivalent (or "белгісіз" = don't know).
+2. **Phase 2** — only for idioms failed in phase 1: the model sees a usage
+   example and infers the meaning from context.
+
+**Grading:** each answer is graded `equivalent` / `similar` / `unknown`. Grades
+are **assigned by a human annotator (fluent in Kazakh) as the final authority**;
+an LLM produces a first-pass pre-grade that the annotator reviews and corrects.
+
+**Scoring** (`scripts/score_idioms.py`, max 1.0/idiom): phase-1 equivalent=1.0,
+similar=0.5; phase-2 (penalty ×0.5) equivalent=0.5, similar=0.25. Reports the
+idiom score, phase-1 knowledge rate, and phase-2 rescue rate. This track is
+markedly harder than Track A and separates models more.
+
+---
 
 ## Repository layout
 
 ```
-factcheck_dataset.xlsx        Master dataset (hand-edited)
-data/dataset.csv|.jsonl       Git-diffable export of the dataset (run export_dataset.py)
-sources/*.txt                 Exact source texts fed to models (leg_text01, news_text1, …)
-prompts/factcheck_prompt_kk.txt   The per-claim fact-checker prompt (Kazakh)
-prompts/chat_run_<source>.txt     Bundled prompt for web-chat runs
-scripts/models.json           Model registry for API runs (Gemini)
-scripts/run_factcheck.py      API runner (per-claim or --batch)
-scripts/make_chat_prompt.py   Build the bundled chat prompt for a source
-scripts/check_grounding.py    Validity gate: evidence must occur in the source
-scripts/score.py              Per-run scoring (accuracy, F1, kappa, confusion)
-scripts/leaderboard.py        Combined table across all sources/models
-scripts/export_dataset.py     xlsx -> csv/jsonl ; extract_source.py  docx -> txt
-results/                      Raw model outputs (verdicts + evidence)
-.env.example                  Template for the Gemini key (.env is git-ignored)
+Track A (fact-checking) — repository root
+  factcheck_dataset.xlsx        master dataset (hand-edited)
+  data/dataset.csv|.jsonl        git-diffable export
+  sources/*.txt                  exact source texts fed to models
+  prompts/factcheck_prompt_kk.txt, chat_run_<source>.txt
+  results/<model>_<source>_run.json   raw outputs (verdict + evidence)
+  scripts/run_factcheck, make_chat_prompt, check_grounding, score, leaderboard,
+          export_dataset, extract_source, models.json
+
+Track B (idioms) — idioms/
+  idioms/idioms_dataset.xlsx, idioms.csv|.jsonl
+  idioms/results/<model>_grades.json, *_raw.json
+  prompts/idiom_phase1.txt, idiom_phase2.txt
+  scripts/make_idiom_prompt.py, score_idioms.py
+
+Shared
+  RESULTS.md   LICENSE   CITATION.cff   notebooks/run_in_colab.ipynb (Gemini)
 ```
 
-Everything except the API keys is committed, so the full method — prompt, code,
-raw model outputs, scoring — is reproducible and auditable.
+Everything except API keys is committed — prompts, per-item raw outputs, data,
+and all scripts — so both tracks are reproducible and auditable.
 
 ## How to run
 
 ```bash
 pip install -r requirements.txt
+cp .env.example .env      # Gemini key only; other models run via web chat
 
-cp .env.example .env          # then paste your API keys into .env
-python scripts/export_dataset.py                 # refresh csv/jsonl from xlsx
+# Track A
+python scripts/export_dataset.py
 python scripts/run_factcheck.py --model gemini --batch --source news_text1
-python scripts/check_grounding.py results/gemini_news_text1_run.json  # validity gate
+python scripts/check_grounding.py results/gemini_news_text1_run.json
 python scripts/score.py results/gemini_news_text1_run.json
+python scripts/leaderboard.py            # combined table + McNemar
+
+# Track B
+python scripts/make_idiom_prompt.py --phase 1          # -> prompts/idiom_phase1.txt
+python scripts/make_idiom_prompt.py --phase 2 --ids 2,8,15   # failed idioms
+python scripts/score_idioms.py idioms/results/<model>_grades.json
 ```
 
-Only Gemini is run via API (`scripts/models.json`). The other four models are
-run via web chat: generate the prompt with
-`python scripts/make_chat_prompt.py --source <name>`, paste
-`prompts/chat_run_<name>.txt` into the model's chat, and save its JSON reply to
-`results/<model>_<name>_run.json`.
-
-Run `python scripts/leaderboard.py` for the combined table across all sources
-(accuracy, Wilson CIs, macro-F1, per-type/per-source breakdowns, and pairwise
-McNemar tests). **See [`RESULTS.md`](RESULTS.md) for the full pilot report and
-findings.**
+Chat models: generate the prompt, paste it into the model's chat, save its JSON
+reply to `results/` (Track A) or grade it into `idioms/results/` (Track B).
 
 ## License & citation
 
 Dataset/texts/outputs: CC BY 4.0; code: MIT (see [`LICENSE`](LICENSE)). Please
 cite via [`CITATION.cff`](CITATION.cff).
-
-## Models
-
-Five models, each from a different lab, all validated at 100% grounding:
-**Claude** (Anthropic, blind subagent), **Gemini 2.5 Flash** (Google, API),
-**Qwen3.7-Plus** (Alibaba, chat), **DeepSeek-V3** (chat), **Kimi K2.6**
-(Moonshot, chat). Only Gemini runs via API; the rest via web chat with the
-`prompts/chat_run_<source>.txt` prompt.
-
-## Current status
-
-- 2 sources: `leg_text01` (Constitution, 20 claims) + `news_text1` (news, 21).
-- All 5 models run on both; combined so far: Claude 39/41, Gemini/Qwen/Kimi
-  38/41, DeepSeek 37/41. Confidence intervals overlap — with 41 claims the
-  ranking is not yet statistically separable; the robust finding is that
-  causal-relation inversions are the systematic weak spot.
-- Planned: source text 3 (informal, code-mixed) to reach ~60 and add
-  discriminating (causal / pragmatic) items, then compile the report.
