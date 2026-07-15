@@ -8,7 +8,7 @@
   },
   {
    "id": 2,
-   "phase1": "unknown",
+   "phase1": "similar",
    "phase2": "similar"
   },
   {
@@ -98,7 +98,7 @@
   },
   {
    "id": 20,
-   "phase1": "equivalent",
+   "phase1": "similar",
    "phase2": null
   },
   {
@@ -133,7 +133,7 @@
   },
   {
    "id": 27,
-   "phase1": "similar",
+   "phase1": "equivalent",
    "phase2": null
   },
   {
