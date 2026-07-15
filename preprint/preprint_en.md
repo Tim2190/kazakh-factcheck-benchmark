@@ -1,6 +1,6 @@
 # Do Large Language Models Understand Kazakh? A Two-Track Pilot Benchmark
 
-**Timur Seydalin**
+**Timur Seidalin**
 
 *Preprint, version 1.0 (pilot). Data and code: https://github.com/Tim2190/kazakh-factcheck-benchmark*
 
