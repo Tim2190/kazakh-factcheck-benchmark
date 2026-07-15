@@ -24,7 +24,7 @@
   {
    "id": 5,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 6,
@@ -34,12 +34,12 @@
   {
    "id": 7,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "similar"
   },
   {
    "id": 8,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 9,
@@ -69,7 +69,7 @@
   {
    "id": 14,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 15,
@@ -89,7 +89,7 @@
   {
    "id": 18,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 19,
@@ -99,12 +99,12 @@
   {
    "id": 20,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "similar"
   },
   {
    "id": 21,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 22,
@@ -124,7 +124,7 @@
   {
    "id": 25,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 26,
@@ -134,7 +134,7 @@
   {
    "id": 27,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 28,

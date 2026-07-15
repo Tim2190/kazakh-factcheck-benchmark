@@ -39,7 +39,7 @@
   {
    "id": 8,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "unknown"
   },
   {
    "id": 9,
@@ -54,7 +54,7 @@
   {
    "id": 11,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "similar"
   },
   {
    "id": 12,
@@ -64,7 +64,7 @@
   {
    "id": 13,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 14,
@@ -89,7 +89,7 @@
   {
    "id": 18,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 19,
@@ -134,7 +134,7 @@
   {
    "id": 27,
    "phase1": "unknown",
-   "phase2": null
+   "phase2": "equivalent"
   },
   {
    "id": 28,
