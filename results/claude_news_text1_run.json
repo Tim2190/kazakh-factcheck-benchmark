@@ -1,0 +1,29 @@
+{
+  "model": "claude", "model_id": "claude (Anthropic, blind subagent run)",
+  "run_mode": "blind_subagent_batch",
+  "note": "Blind: fact-checker read only the prompt file (source + claims); ground truth never provided.",
+  "source_doc": "news_text1",
+  "predictions": [
+    {"id":"021","verdict":"REFUTED","error_type":"number","evidence":"2026 жылғы 13 шілдеде мемлекет басшысы Премьер-министр Олжас Бектеновті қабылдады.","rationale":"Кездесу 2 маусымда емес, 13 шілдеде."},
+    {"id":"022","verdict":"REFUTED","error_type":"number","evidence":"ішкі жалпы өнім көлемі 4,1 пайызға өскенін баяндады","rationale":"ІЖӨ өскен, тұжырым өспегенін айтады."},
+    {"id":"023","verdict":"REFUTED","error_type":"number","evidence":"Негізгі капиталға тартылған инвестиция көлемі 9,5 триллион теңгені құрады","rationale":"5,5 емес, 9,5 трлн."},
+    {"id":"024","verdict":"SUPPORTED","error_type":null,"evidence":"өңдеу секторында 1,7 триллион теңгеге 200 инвестициялық жоба іске қосылып","rationale":"расталған."},
+    {"id":"025","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"үшінші вокзал жоқ."},
+    {"id":"026","verdict":"SUPPORTED","error_type":null,"evidence":"Астана қаласындағы екінші әуежайдың құрылысын","rationale":"расталған."},
+    {"id":"027","verdict":"SUPPORTED","error_type":null,"evidence":"Пайдалануға берілетін тұрғын үй көлемі 20 миллион шаршы метрге жетпек","rationale":"расталған."},
+    {"id":"028","verdict":"REFUTED","error_type":"number","evidence":"бюджеттің әр теңгесі 6,5 теңге жеке инвестиция тартуға септігін тигізді","rationale":"қатынас кері аударылған."},
+    {"id":"029","verdict":"SUPPORTED","error_type":null,"evidence":"Маусым айында жылдық инфляция деңгейі 10,3 пайызды құрады.","rationale":"расталған."},
+    {"id":"030","verdict":"REFUTED","error_type":"number","evidence":"жылына 800 миллиард теңгеден аса қаржы үнемделеді","rationale":"801 емес, 800."},
+    {"id":"031","verdict":"SUPPORTED","error_type":null,"evidence":"«Деректерді өңдеу орталығы алқабы» жобасын іске асыру мақсатында әлемдік ІТ көшбасшыларымен бірге қуаты 250 МВт болатын инфрақұрылым жасақталатынын айтты","rationale":"250 МВт және жоба атауы расталған."},
+    {"id":"032","verdict":"SUPPORTED","error_type":null,"evidence":"бес жылу электр орталығы аса жоғары тәуекелдің «қызыл» аймағынан шығарылып, үш ЖЭО «жасыл» аймаққа ауыстырылды","rationale":"расталған."},
+    {"id":"033","verdict":"REFUTED","error_type":"causal","evidence":"Алматы тау кластерін дамыту туризм саласының ІЖӨ құрылымындағы үлесін арттырады","rationale":"себеп-салдар кері."},
+    {"id":"034","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"Медеу жоқ."},
+    {"id":"035","verdict":"REFUTED","error_type":"causal","evidence":"60 шақырым трасса құрылысы аяқталғанда тәулігіне 10 мың адамға дейін қызмет көрсетуге мүмкіндік туады","rationale":"себеп-салдар кері."},
+    {"id":"036","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"стадион жоқ."},
+    {"id":"037","verdict":"REFUTED","error_type":"entity","evidence":"Еліміз «Болашақ ойындары-2026» жарыстарын өткізуге дайын.","rationale":"атауы басқа."},
+    {"id":"038","verdict":"REFUTED","error_type":"number","evidence":"Биылғы жөндеу жұмыстары 9 энергия блогын, 55 қазандықты және 51 турбинаны қамтиды.","rationale":"11 емес, 9."},
+    {"id":"039","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"фото жоқ."},
+    {"id":"040","verdict":"SUPPORTED","error_type":null,"evidence":"Мемлекет басшысы жаңа Конституцияға сай қабылданып жатқан шаралар туралы хабардар болды.","rationale":"расталған."},
+    {"id":"041","verdict":"NOT_ENOUGH_INFO","error_type":"invented","evidence":null,"rationale":"ауыру/демалыс жоқ."}
+  ]
+}

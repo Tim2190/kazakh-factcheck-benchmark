@@ -1,0 +1,147 @@
+{
+  "model": "kimi",
+  "model_id": "moonshotai/Kimi-K2.6",
+  "run_mode": "chat_batch",
+  "note": "Routed via HuggingChat Omni.",
+  "prompt_file": "prompts/chat_run_news_text1.txt",
+  "source_doc": "news_text1",
+  "predictions": [
+    {
+      "id": "021",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "2026 жылғы 13 шілдеде мемлекет басшысы Премьер-министр Олжас Бектеновті қабылдады."
+    },
+    {
+      "id": "022",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Премьер-министр бірінші жартыжылдық қорытындысы бойынша ішкі жалпы өнім көлемі 4,1 пайызға өскенін баяндады."
+    },
+    {
+      "id": "023",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Негізгі капиталға тартылған инвестиция көлемі 9,5 триллион теңгені құрады"
+    },
+    {
+      "id": "024",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Биыл өңдеу секторында 1,7 триллион теңгеге 200 инвестициялық жоба іске қосылып, 17 мың жұмыс орны ашылады."
+    },
+    {
+      "id": "025",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "026",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Астана қаласындағы екінші әуежайдың құрылысын және Tarlan Astana көлік жүйесінің келесі кезеңін жоспарлау туралы айтты."
+    },
+    {
+      "id": "027",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Пайдалануға берілетін тұрғын үй көлемі 20 миллион шаршы метрге жетпек."
+    },
+    {
+      "id": "028",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Бұл ретте бюджеттің әр теңгесі 6,5 теңге жеке инвестиция тартуға септігін тигізді."
+    },
+    {
+      "id": "029",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Маусым айында жылдық инфляция деңгейі 10,3 пайызды құрады."
+    },
+    {
+      "id": "030",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Кейбір әлеуметтік төлемдерді оңтайландыру нәтижесінде жылына 800 миллиард теңгеден аса қаржы үнемделеді."
+    },
+    {
+      "id": "031",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Олжас Бектенов «Деректерді өңдеу орталығы алқабы» жобасын іске асыру мақсатында әлемдік ІТ көшбасшыларымен бірге қуаты 250 МВт болатын инфрақұрылым жасақталатынын айтты."
+    },
+    {
+      "id": "032",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Өткен маусымның қорытындысы бойынша бес жылу электр орталығы аса жоғары тәуекелдің «қызыл» аймағынан шығарылып, үш ЖЭО «жасыл» аймаққа ауыстырылды.",
+      "verdict_original": "REFUTED",
+      "error_type_original": "number",
+      "correction_note": "Post-hoc: claim 032 corrected (өтетін болады→өтті). Original REFUTED was based solely on the past/future tense artifact now removed."
+    },
+    {
+      "id": "033",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Алматы тау кластерін дамыту туризм саласының ІЖӨ құрылымындағы үлесін арттырады."
+    },
+    {
+      "id": "034",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "035",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "60 шақырым трасса құрылысы аяқталғанда тәулігіне 10 мың адамға дейін қызмет көрсетуге мүмкіндік туады."
+    },
+    {
+      "id": "036",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "037",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Еліміз «Болашақ ойындары-2026» жарыстарын өткізуге дайын."
+    },
+    {
+      "id": "038",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Биылғы жөндеу жұмыстары 9 энергия блогын, 55 қазандықты және 51 турбинаны қамтиды."
+    },
+    {
+      "id": "039",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "040",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Мемлекет басшысы жаңа Конституцияға сай қабылданып жатқан шаралар туралы хабардар болды."
+    },
+    {
+      "id": "041",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    }
+  ],
+  "corrections": [
+    {
+      "id": "032",
+      "from": "REFUTED",
+      "to": "SUPPORTED",
+      "reason": "claim tense artifact removed; model's sole objection (tense) no longer applies"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "model": "kimi",
+  "model_id": "moonshotai/Kimi-K2.6",
+  "run_mode": "chat_batch",
+  "prompt_file": "prompts/chat_run_leg_text01.txt",
+  "source_doc": "leg_text01",
+  "predictions": [
+    {
+      "id": "001",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Мемлекеттің ең жоғары құндылығы – адам мен оның өмірі, құқықтары мен бостандықтары."
+    },
+    {
+      "id": "002",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Басқару үлгісі – президенттік республика."
+    },
+    {
+      "id": "003",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының елордасы – Астана қаласы."
+    },
+    {
+      "id": "004",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "005",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "006",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Олардың сипаттамасы және пайдалану тәртібі конституциялық заңда белгіленеді."
+    },
+    {
+      "id": "007",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының азаматында қос немесе көп азаматтығы болуына жол берілмейді."
+    },
+    {
+      "id": "008",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының халықаралық шарттарында өзгеше белгiленбесе, Қазақстан Республикасының азаматы шет мемлекетке берілмейді."
+    },
+    {
+      "id": "009",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    },
+    {
+      "id": "010",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Қазақстан Республикасының Президентін ... жеті жыл мерзімге сайлайды."
+    },
+    {
+      "id": "011",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Вице-Президентті тағайындауға келісім беруден қайта бас тартылған жағдайда Қазақстан Республикасының Президенті Құрылтайды таратуға құқылы"
+    },
+    {
+      "id": "012",
+      "verdict": "REFUTED",
+      "error_type": "entity",
+      "evidence": "Қазақстан Республикасының Құрылтайы – заң шығару билігiн жүзеге асыратын Қазақстан Республикасының жоғары өкiлдi органы."
+    },
+    {
+      "id": "013",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Құрылтайдың өкілеттігі оның бірінші сессиясы ашылған кезден басталады"
+    },
+    {
+      "id": "014",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Жиырма бес жасқа толған, Қазақстан Республикасының азаматтығы бар, оның аумағында соңғы он жыл бойы тұрақты тұрып жатқан адам Құрылтай депутаты бола алады."
+    },
+    {
+      "id": "015",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Құрылтайды мемлекеттік тілді жетік меңгерген депутаттар арасынан Құрылтай депутаттары жалпы санының көпшілік дауысымен жасырын дауыс беру арқылы сайланған Төраға басқарады."
+    },
+    {
+      "id": "016",
+      "verdict": "REFUTED",
+      "error_type": "number",
+      "evidence": "Құрылтай қабылдаған заң он күн ішінде Қазақстан Республикасының Президентіне қол қоюға ұсынылады."
+    },
+    {
+      "id": "017",
+      "verdict": "REFUTED",
+      "error_type": "causal",
+      "evidence": "Үкімет енгізген заң жобасы қабылданбаса, Премьер-Министр Құрылтай отырысында Үкіметке сенім білдіру мәселесін қоюға құқылы."
+    },
+    {
+      "id": "018",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Құрылтай Қазақстан Республикасының бүкіл аумағында міндетті күші бар заң және қаулы қабылдайды."
+    },
+    {
+      "id": "019",
+      "verdict": "SUPPORTED",
+      "error_type": null,
+      "evidence": "Қазақстан Республикасының Конституциялық Соты – конституциялық бақылауды жүзеге асыратын және бүкіл ел аумағында Қазақстан Республикасы Конституциясының үстемдігін қамтамасыз ететін тәуелсіз мемлекеттік орган."
+    },
+    {
+      "id": "020",
+      "verdict": "NOT_ENOUGH_INFO",
+      "error_type": "invented",
+      "evidence": null
+    }
+  ],
+  "note": "Routed via HuggingChat \"Omni\" auto-router, which selected Kimi-K2.6 for this batched request."
+}
