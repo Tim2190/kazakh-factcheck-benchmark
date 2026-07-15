@@ -1,117 +1,86 @@
-# Results — Track A: Fact-Checking (pilot)
+# Results — Kazakh Language Understanding Benchmark (pilot)
 
-Part of the Kazakh Language Understanding Benchmark (see `README.md`). Track B
-(idiom comprehension) results are compiled separately once all models are run.
+Two complementary tracks, five LLMs from five labs. See `README.md` for the
+setup; regenerate Track A with `scripts/leaderboard.py` and Track B with
+`scripts/score_idioms.py`.
 
+## Overview — the headline
 
-**Scope:** 60 claims over 3 sources of different genres, 5 LLMs from 5 labs.
-Open-book protocol (full source + one claim; gold never shown). Every counted
-run passed the grounding gate (100% of evidence quotes found verbatim in the
-source). Regenerate with `python scripts/leaderboard.py`.
+| Model | Lab | Track A: fact-checking (60) | Track B: idioms (30) |
+|-------|-----|------------------------------|-----------------------|
+| Claude | Anthropic | 96.7% | **82.5%** |
+| Gemini 2.5 Flash | Google | 93.3% | 74.2% |
+| Qwen3.7-Plus | Alibaba | 93.3% | 71.7% |
+| DeepSeek-V3 | DeepSeek | 91.7% | 51.7% |
+| Kimi K2.6 | Moonshot | 95.0% | **28.3%** |
 
-## Sources (genres)
+**The two tracks measure different, weakly-correlated abilities.** On Track A
+all five models cluster at 92–97% and are statistically indistinguishable. On
+Track B they spread from 28% to 82% — and the ranking reorders: **Kimi is #2 on
+fact-checking but last on idioms** (95% → 28%). Grounded reasoning over a given
+text and stored knowledge of Kazakh phraseology are not the same competence, and
+a single fact-checking score would have hidden this entirely.
 
-| id | genre | claims |
-|----|-------|--------|
-| `leg_text01` | Constitution of Kazakhstan (2026, legal) | 20 |
-| `news_text1` | government economic report (news) | 21 |
-| `msgtxt` | informal messenger dialogue (code-mixed KK/RU slang) | 19 |
+---
 
-Distortion taxonomy: `real`→SUPPORTED; `fake_number`/`fake_entity`/`fake_causal`
-→REFUTED; `fake_invented`→NOT_ENOUGH_INFO.
+## Track A — Fact-checking (60 claims, 3 genres)
 
-## Leaderboard (60 claims)
+| # | Model | Accuracy | 95% CI (Wilson) | macro-F1 |
+|---|-------|----------|-----------------|----------|
+| 1 | Claude | 58/60 = 96.7% | 88.6–99.1% | 0.970 |
+| 2 | Kimi K2.6 | 57/60 = 95.0% | 86.3–98.3% | 0.951 |
+| 3 | Gemini 2.5 Flash | 56/60 = 93.3% | 84.1–97.4% | 0.933 |
+| 3 | Qwen3.7-Plus | 56/60 = 93.3% | 84.1–97.4% | 0.931 |
+| 5 | DeepSeek-V3 | 55/60 = 91.7% | 81.9–96.4% | 0.922 |
 
-| # | Model | Lab | Accuracy | 95% CI (Wilson) | macro-F1 |
-|---|-------|-----|----------|-----------------|----------|
-| 1 | Claude (blind) | Anthropic | 58/60 = 96.7% | 88.6–99.1% | 0.970 |
-| 2 | Kimi K2.6 | Moonshot | 57/60 = 95.0% | 86.3–98.3% | 0.951 |
-| 3 | Gemini 2.5 Flash | Google | 56/60 = 93.3% | 84.1–97.4% | 0.933 |
-| 3 | Qwen3.7-Plus | Alibaba | 56/60 = 93.3% | 84.1–97.4% | 0.931 |
-| 5 | DeepSeek-V3 | DeepSeek | 55/60 = 91.7% | 81.9–96.4% | 0.922 |
+- CIs overlap; pairwise McNemar p ≥ 0.375 → **no significant difference**.
+- Only systematic weak spot: **causal-relation inversions** (`fake_causal`);
+  DeepSeek weakest at 5/9. Number/entity/invented and paraphrase are ≈saturated.
+- **Robust to informal register**: the code-mixed KK/RU dialogue did not hurt
+  (all ≥ 18/19).
+- **Grounding gate**: 100% of evidence quotes occur in the source for all five
+  counted models; a sixth trial that answered from memory was caught at ~12%.
 
-The confidence intervals overlap almost completely (all within ~82–99%). With
-60 claims the ranking is **not statistically separable** — the largest gap
-(Claude 58 vs DeepSeek 55 = 3 items) is within noise. Treat the ordering as
-indicative, not a definitive ranking.
+## Track B — Idiom comprehension (30 idioms, two-phase)
 
-## Accuracy by distortion type
+| # | Model | Idiom score | Phase-1 known | Exact (P1) | Phase-2 rescue |
+|---|-------|-------------|---------------|------------|----------------|
+| 1 | Claude | 24.75/30 = **82.5%** | 26/30 | 22/30 | 2/4 |
+| 2 | Gemini 2.5 Flash | 22.25/30 = 74.2% | 25/30 | 16/30 | 4/5 |
+| 3 | Qwen3.7-Plus | 21.50/30 = 71.7% | 21/30 | 14/30 | **9/9** |
+| 4 | DeepSeek-V3 | 15.50/30 = 51.7% | 16/30 | 9/30 | 9/14 |
+| 5 | Kimi K2.6 | 8.50/30 = **28.3%** | 8/30 | 4/30 | 9/22 |
 
-| Model | real | number | entity | causal | invented |
-|-------|------|--------|--------|--------|----------|
-| Claude | 16/17 | 12/12 | 10/10 | **8/9** | 12/12 |
-| Kimi | 17/17 | 11/12 | 9/10 | **8/9** | 12/12 |
-| Gemini | 16/17 | 11/12 | 10/10 | **7/9** | 12/12 |
-| Qwen | 16/17 | 12/12 | 10/10 | **7/9** | 11/12 |
-| DeepSeek | 17/17 | 11/12 | 10/10 | **5/9** | 12/12 |
+Scoring: phase-1 equivalent=1.0 / similar=0.5; phase-2 (penalty ×0.5)
+equivalent=0.5 / similar=0.25. Phase-1 grades were validated per-item by a human
+annotator; phase-2 grades are LLM-assigned and annotator-approved.
 
-Number, entity, invented (NEI) and faithful paraphrases are **near-saturated**
-(≈95–100% for everyone). The only category that separates models is
-**`causal` (cause↔effect inversions)** — from 5/9 (DeepSeek) to 8/9
-(Claude, Kimi).
+- **Stored phraseological knowledge varies enormously** (exact-equivalent in
+  phase 1: 22 → 4 out of 30). Weak models don't just miss — they *confidently
+  hallucinate a real Russian idiom that maps to the wrong meaning* (e.g. Kimi:
+  "прибрать к рукам" → "адская жара"; DeepSeek: "бездушный" → "разгильдяй").
+- **Context rescue (phase 2) is a separate skill.** Qwen knew fewer idioms cold
+  but inferred **9/9** from a single usage example; Kimi, given context, still
+  failed 13/22 — a genuine knowledge gap, not a prompting artifact.
+- Some idioms defeat everyone: `#8` "айрандай аптап, күбідей күптеп" (subjugate)
+  was missed by all five even with context.
 
-## Accuracy by genre
-
-| Model | legal | news | informal (msgtxt) |
-|-------|-------|------|-------------------|
-| Claude | 19/20 | 20/21 | 19/19 |
-| Kimi | 17/20 | 21/21 | 19/19 |
-| Gemini | 19/20 | 18/21 | 19/19 |
-| Qwen | 19/20 | 19/21 | 18/19 |
-| DeepSeek | 18/20 | 19/21 | 18/19 |
-
-**The informal, code-mixed dialogue did not degrade performance** (all models
-≥ 18/19). Robustness to register/slang/code-switching is itself a finding.
-
-## Error analysis (item difficulty)
-
-51 of 60 claims were classified correctly by **all five** models. The signal
-lives in 9 items:
-
-| claim | type | missed by |
-|-------|------|-----------|
-| 031 | fake_causal | 4/5 (all but Kimi) |
-| 007 | fake_number | 3/5 (Gemini, Kimi, DeepSeek) |
-| 006 | real (borderline) | 2/5 (Claude, Qwen) |
-| 008 | fake_causal | 2/5 (Kimi, DeepSeek) |
-| 035 | fake_causal | 2/5 (Gemini, DeepSeek) |
-| 052 | fake_causal | 2/5 (Qwen, DeepSeek) |
-| 004 / 025 / 040 | mixed | 1/5 each |
-
-**4 of the top-6 hardest items are causal inversions.** The single hardest
-item (031) fooled 4 of 5 models — the source states "infrastructure is built
-*for* the project", the claim inverts it to "the project is launched *for* the
-infrastructure."
-
-## Key findings
-
-1. **Modern LLMs fact-check Kazakh well when grounded** — 92–97% on formal and
-   informal text. For a low-resource language this is a non-trivial baseline.
-2. **Causal-relation inversions are the systematic blind spot.** It is the only
-   distortion type that discriminates models; DeepSeek is notably weak (5/9).
-3. **Robust to informal register.** Colloquial code-mixed (KK/RU) dialogue did
-   not hurt accuracy.
-4. **Grounding discipline is high** — 100% of evidence quotes across all counted
-   runs occur in the provided text (models used the source, not memory). A
-   sixth candidate (a chat model that did not ingest the text and quoted the
-   *real* constitution from memory) was caught at ~12% grounding and excluded.
+---
 
 ## Limitations
 
-- **N = 60** → wide CIs; rankings are indicative. Pairwise McNemar exact tests
-  confirm this: **every** model-vs-model p-value is ≥ 0.375 (all ≫ 0.05), so
-  no pairwise difference is statistically significant (see `leaderboard.py`).
-- **Single annotator**; borderline items reviewed during construction. Claim 006
-  ("constitutional law" vs "separate law") remains a genuine borderline where 2
-  models reasonably disagreed with the gold. Two other edge cases were fixed
-  mid-study: 032 (an unintended past/future tense artifact) and 052 (reworded
-  from an invented-element causal into a clean inversion).
-- **One text per genre** → genre and specific-document effects are confounded.
-- **Hybrid run mode**: Gemini via API (temperature 0), the others via web chat;
-  Claude via a blind isolated agent. Recorded per run.
+- **Small N** (60 claims / 30 idioms) → wide CIs; Track A rankings are not
+  separable (McNemar n.s.). Track B differences are large but still a pilot.
+- **Single annotator** (Kazakh-fluent) as final authority; Track A gold is
+  single-annotated with a `borderline` flag (e.g. `006`). Track B: phase-1
+  human-validated per item, phase-2 LLM-graded and human-approved.
+- **One text per genre** in Track A → genre and document effects confounded.
+- **Idioms partly in training data**: famous idioms may be memorized, rare
+  literary ones are not — this is the intended difficulty gradient, not a bug.
+- **Hybrid run mode**: Gemini via API (temp 0); others via web chat; Claude via
+  a blind isolated agent. Recorded per run.
 
 ## Reproducibility
 
-Prompt, per-claim raw outputs (verdict + evidence), dataset (xlsx + csv/jsonl),
-and all scripts (`run_factcheck`, `make_chat_prompt`, `check_grounding`,
-`score`, `leaderboard`) are committed. Only API keys are excluded.
+Prompts, per-item raw model outputs, human-validated grades, datasets
+(xlsx + csv/jsonl), and all scripts are committed; only API keys are excluded.
