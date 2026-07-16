@@ -4,7 +4,7 @@ message: "If you use this dataset or code, please cite it as below."
 type: dataset
 authors:
   - given-names: "Timur"
-    family-names: "Seydalin"
+    family-names: "Seidalin"
     alias: "Tim2190"
 repository-code: "https://github.com/Tim2190/kazakh-factcheck-benchmark"
 abstract: >-
