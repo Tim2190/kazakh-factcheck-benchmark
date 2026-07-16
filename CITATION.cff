@@ -7,6 +7,7 @@ authors:
     family-names: "Seidalin"
     alias: "Tim2190"
 repository-code: "https://github.com/Tim2190/kazakh-factcheck-benchmark"
+doi: "10.5281/zenodo.21382433"
 abstract: >-
   A pilot benchmark probing how well large language models understand the
   Kazakh language along two complementary tracks. Track A (fact-checking):

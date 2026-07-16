@@ -2,7 +2,7 @@
 
 **Timur Seidalin**
 
-*Preprint, version 1.0 (pilot). Data and code: https://github.com/Tim2190/kazakh-factcheck-benchmark*
+*Preprint, version 1.0 (pilot). DOI: https://doi.org/10.5281/zenodo.21382433 · Data and code: https://github.com/Tim2190/kazakh-factcheck-benchmark*
 
 ---
 

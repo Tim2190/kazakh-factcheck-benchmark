@@ -2,7 +2,7 @@
 
 **Тимур Сейдалин**
 
-*Препринт, версия 1.0 (пилот). Данные и код: https://github.com/Tim2190/kazakh-factcheck-benchmark*
+*Препринт, версия 1.0 (пилот). DOI: https://doi.org/10.5281/zenodo.21382433 · Данные и код: https://github.com/Tim2190/kazakh-factcheck-benchmark*
 
 ---
 
